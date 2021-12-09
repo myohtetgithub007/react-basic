@@ -1,17 +1,26 @@
 import React from "react";
 class Item extends React.Component {
+  //   render() {
+  //     return <div>{this.props.name}</div>;
+  //   }
+}
+class App extends React.Component {
+  state = {
+    name: "orange",
+    color: "red",
+  };
+  changeColor = () => {
+    this.setState({ color: "green" });
+  };
   render() {
     return (
       <div>
-        <h1>Item component heading</h1>
-        <p>item component</p>
+        <p>{this.state.color}</p>
+        <button type="button" onClick={this.changeColor}>
+          Change Color
+        </button>
       </div>
     );
-  }
-}
-class App extends React.Component {
-  render() {
-    return <Item />;
   }
 }
 export default App;
