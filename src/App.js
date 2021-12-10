@@ -1,9 +1,5 @@
 import React from "react";
-class Item extends React.Component {
-  //   render() {
-  //     return <div>{this.props.name}</div>;
-  //   }
-}
+import Header from "./Header";
 class App extends React.Component {
   state = {
     name: "orange",
@@ -15,10 +11,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.state.color}</p>
+        <h1>{this.state.color}</h1>
         <button type="button" onClick={this.changeColor}>
           Change Color
         </button>
+        <Header name="Myo Htet">
+          <p>Good Morning</p>
+        </Header>
       </div>
     );
   }
