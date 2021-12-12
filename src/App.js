@@ -1,4 +1,5 @@
 import React from "react";
+import AddForm from "./Addform";
 // import Header from "./Header";
 // import Item from "./Item";
 class Item extends React.Component {
@@ -11,6 +12,24 @@ class Item extends React.Component {
     );
   }
 }
+class Title extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>{this.props.name}</h1>
+      </div>
+    );
+  }
+}
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        <Title name={this.props.name}></Title>
+      </div>
+    );
+  }
+}
 class App extends React.Component {
   state = {
     items: [
@@ -18,29 +37,24 @@ class App extends React.Component {
       { id: 1, name: "Orange", price: 1.2 },
     ],
   };
-  nameRef = React.createRef();
-  priceRef = React.createRef();
-  add = () => {
+  add = (name, price) => {
     let id = this.state.items.length + 1;
-    let name = this.nameRef.current.value;
-    let price = this.priceRef.current.value;
     this.setState({
       items: [...this.state.items, { id, name, price }],
     });
   };
+
   render() {
     return (
       <div>
-        <h1>Hello React Component</h1>
+        <h1>Hello React</h1>
         <ul>
           {this.state.items.map((i) => {
             return <Item name={i.name} price={i.price}></Item>;
           })}
         </ul>
-        <input type="text" ref={this.nameRef} />
-        <input type="text" ref={this.priceRef} />
-        <br></br>
-        <button onClick={this.add}>Add</button>
+        <AddForm add={this.add}></AddForm>
+        <Header name="Myo Htet"></Header>
       </div>
     );
   }
